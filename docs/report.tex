@@ -1,0 +1,296 @@
+%
+% Main document
+% ===========================================================================
+% This is part of the document "Project documentation template".
+% Authors: brd3, kaa1
+%
+
+%---------------------------------------------------------------------------
+\documentclass[
+	a4paper,					% paper format
+	10pt,							% fontsize
+	twoside,					% double-sided
+	notitlepage,			% use no standard title page
+	parskip=half,			% set paragraph skip to half of a line
+]{scrreprt}					% KOMA-script report
+%---------------------------------------------------------------------------
+
+\raggedbottom
+\KOMAoptions{cleardoublepage=plain}			% Add header and footer on blank pages
+
+
+% Load Standard Packages:
+%---------------------------------------------------------------------------
+\usepackage[standard-baselineskips]{cmbright}
+
+\usepackage[english]{babel}										% german hyphenation
+\usepackage[utf8]{inputenc}  							% Unix/Linux - load extended character set (ISO 8859-1)
+%\usepackage[ansinew]{inputenc}  							% Windows - load extended character set (ISO 8859-1)
+\usepackage[T1]{fontenc}											% hyphenation of words with ä,ö and ü
+\usepackage{textcomp}													% additional symbols
+\usepackage{ae}																% better resolution of Type1-Fonts
+\usepackage{fancyhdr}													% simple manipulation of header and footer
+\usepackage{etoolbox}													% color manipulation of header and footer
+\usepackage{graphicx}                      		% integration of images
+\usepackage{float}														% floating objects
+\usepackage{caption}													% for captions of figures and tables
+\usepackage{booktabs}													% package for nicer tables
+\usepackage{tocvsec2}													% provides means of controlling the sectional numbering
+\usepackage{listings}
+%---------------------------------------------------------------------------
+
+% Load Math Packages
+%---------------------------------------------------------------------------
+\usepackage{amsmath}                    	   	% various features to facilitate writing math formulas
+\usepackage{amsthm}                       	 	% enhanced version of latex's newtheorem
+\usepackage{amsfonts}                      		% set of miscellaneous TeX fonts that augment the standard CM
+\usepackage{amssymb}													% mathematical special characters
+\usepackage{exscale}													% mathematical size corresponds to textsize
+%---------------------------------------------------------------------------
+
+% Package to facilitate placement of boxes at absolute positions
+%---------------------------------------------------------------------------
+\usepackage[absolute]{textpos}
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+%---------------------------------------------------------------------------
+
+% Definition of Colors
+%---------------------------------------------------------------------------
+\RequirePackage{color}                          % Color (not xcolor!)
+\definecolor{linkblue}{rgb}{0,0,0.8}            % Standard
+\definecolor{darkblue}{rgb}{0,0.08,0.45}        % Dark blue
+\definecolor{bfhgrey}{rgb}{0.41,0.49,0.57}      % BFH grey
+%\definecolor{linkcolor}{rgb}{0,0,0.8}     			% Blue for the web- and cd-version!
+\definecolor{linkcolor}{rgb}{0,0,0}        			% Black for the print-version!
+%---------------------------------------------------------------------------
+
+% Hyperref Package (Create links in a pdf)
+%---------------------------------------------------------------------------
+\usepackage[
+	pdftex,english,bookmarks,plainpages=false,pdfpagelabels,
+	backref = {false},										% No index backreference
+	colorlinks = {true},                  % Color links in a PDF
+	hypertexnames = {true},               % no failures "same page(i)"
+	bookmarksopen = {true},               % opens the bar on the left side
+	bookmarksopenlevel = {0},             % depth of opened bookmarks
+  pdftitle = {{Presentator3000, an online presentation tool}},	   	% PDF-property
+  pdfauthor = {{bollm6, schmidrobin}},        					  % PDF-property
+	pdfsubject = {Presentator3000},        % PDF-property
+	linkcolor = {linkcolor},              % Color of Links
+	citecolor = {linkcolor},              % Color of Cite-Links
+	urlcolor = {linkcolor},               % Color of URLs
+]{hyperref}
+%---------------------------------------------------------------------------
+
+% Set up page dimension
+%---------------------------------------------------------------------------
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	left=28mm,
+	right=15mm,
+	top=30mm,
+	headheight=20mm,
+	headsep=10mm,
+	textheight=242mm,
+	footskip=15mm
+}
+%---------------------------------------------------------------------------
+
+% Makeindex Package
+%---------------------------------------------------------------------------
+\usepackage{makeidx}                         		% To produce index
+\makeindex                                    	% Index-Initialisation
+%---------------------------------------------------------------------------
+
+% Intro:
+%---------------------------------------------------------------------------
+\begin{document}                              	% Start Document
+\settocdepth{section}														% Set depth of toc
+\pagenumbering{roman}
+%---------------------------------------------------------------------------
+\providecommand{\titel}{Presentator3000}		%  Hier den Titel des Berichts/Thesis eingeben
+\providecommand{\versionnumber}{1.0}			%  Hier die aktuelle Versionsnummer eingeben
+\providecommand{\versiondate}{2016-10-11}		%  Hier das Datum der aktuellen Version eingeben
+
+% Set up header and footer
+%---------------------------------------------------------------------------
+\makeatletter
+\patchcmd{\@fancyhead}{\rlap}{\color{bfhgrey}\rlap}{}{}		% new color of header
+\patchcmd{\@fancyfoot}{\rlap}{\color{bfhgrey}\rlap}{}{}		% new color of footer
+\makeatother
+
+\fancyhf{}																		% clean all fields
+\fancypagestyle{plain}{												% new definition of plain style
+	\fancyfoot[OR,EL]{\footnotesize \thepage} 	% footer right part --> page number
+	\fancyfoot[OL,ER]{\footnotesize \titel, Version \versionnumber, \versiondate}	% footer even page left part
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.  #1}{}}
+\renewcommand{\headrulewidth}{0pt}				% no header stripline
+\renewcommand{\footrulewidth}{0pt} 				% no bottom stripline
+
+\pagestyle{plain}
+%---------------------------------------------------------------------------
+
+
+% Title Page and Abstract
+%---------------------------------------------------------------------------
+%
+% Project documentation template
+% ===========================================================================
+% This is part of the document "Project documentation template".
+% Authors: brd3, kaa1
+%
+
+\begin{titlepage}
+
+
+% BFH-Logo absolute placed at (28,12) on A4 and picture (16:9 or 15cm x 8.5cm)
+% Actually not a realy satisfactory solution but working.
+%---------------------------------------------------------------------------
+\setlength{\unitlength}{1mm}
+\begin{textblock}{20}[0,0](28,12)
+	\includegraphics[scale=1.0]{BFH_Logo_B.png}
+\end{textblock}
+
+\begin{textblock}{154}(28,48)
+	\begin{picture}(150,2)
+		\put(0,0){\color{bfhgrey}\rule{150mm}{2mm}}
+	\end{picture}
+\end{textblock}
+
+\begin{textblock}{154}[0,0](28,50)
+	\includegraphics[width=15cm]{head.jpg}			% Titelbild definieren
+\end{textblock}
+
+\begin{textblock}{154}(28,134)
+	\begin{picture}(150,2)
+		\put(0,0){\color{bfhgrey}\rule{150mm}{2mm}}
+	\end{picture}
+\end{textblock}
+\color{black}
+
+% Institution / Titel / Untertitel / Autoren / Experten:
+%---------------------------------------------------------------------------
+\begin{flushleft}
+
+\vspace*{115mm}
+
+\fontsize{26pt}{28pt}\selectfont
+\titel 				\\							% Titel aus der Datei vorspann/titel.tex lesen
+\vspace{2mm}
+
+\fontsize{16pt}{20pt}\selectfont\vspace{0.3em}
+\vspace{5mm}
+
+\fontsize{10pt}{12pt}\selectfont
+\textbf{Report} \\									% eingeben
+\vspace{3mm}
+
+% Abstract (eingeben):
+%---------------------------------------------------------------------------
+\begin{textblock}{150}(28,190)
+\fontsize{10pt}{12pt}\selectfont
+This document describes the process of what came to be this online presentation tool and what we could have done better in hindsight. \\
+\end{textblock}
+
+\begin{textblock}{150}(28,225)
+\fontsize{10pt}{17pt}\selectfont
+\begin{tabbing}
+xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
+Degree course:	\> Information technology	\\			% Namen eingeben
+Lecture:        \> Project 2 \\
+Authors:        \> Michael Bolli (michael.bolli.1@students.bfh.ch), \\
+\>Robin Schmid (robinsamuel.schmid@students.bfh.ch)		\\					% Namen eingeben
+Principal:	    \> Marcel Pfahrer		\\					% Namen eingeben
+Date:			\> \versiondate					\\		% aus Datei vorspann/version.tex lesen
+\end{tabbing}
+
+\end{textblock}
+\end{flushleft}
+
+\begin{textblock}{150}(28,280)
+\noindent
+\color{bfhgrey}\fontsize{9pt}{10pt}\selectfont
+Berner Fachhochschule | Haute école spécialisée bernoise | Bern University of Applied Sciences
+\color{black}\selectfont
+\end{textblock}
+
+
+\end{titlepage}
+
+%
+% ===========================================================================
+% EOF
+%
+% Versionenkontrolle :
+% -----------------------------------------------
+
+\begin{textblock}{180}(15,150)
+\color{black}
+\begin{huge}
+Version history
+\end{huge}
+\vspace{10mm}
+
+\fontsize{10pt}{18pt}\selectfont
+\begin{tabbing}
+xxxxxxxxxxx\=xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
+Version	\> Date	\> Status		\> Misc.		\\
+0.1	\> 2016-10-11	\> Draft		\> Initial version	\\
+\end{tabbing}
+
+\end{textblock}
+
+\cleardoubleemptypage
+\setcounter{page}{1}
+\cleardoublepage
+\phantomsection
+\let\cleardoublepage\clearpage
+
+%---------------------------------------------------------------------------
+
+% Main part:
+%---------------------------------------------------------------------------
+\pagenumbering{arabic}
+
+\chapter{Introduction}
+\label{chap:intro}
+(Intro Text) In order to confirm that the structure of a text or a program is correct, it is necessary to make sure this program is valid in respect to the grammar. This is called parsing. First the lexical analysis groups characters into tokens which can stand for various identifiers, keywords and constants of a language. After that the parser has to ensure that the input text is well structured, and tries to generate a parse tree. Only if a parse tree can be built, is a text or program syntactically correct.
+
+This project is a parser for LOGO in Java via JavaCC.
+
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\chapter{Grammar}
+\label{chap:grammar}
+%\lstinputlisting[language=Python,basicstyle=\ttfamily]{../src/LogoGrammar.txt}
+\endgroup
+
+\chapter{Solution}
+\label{chap:solution}
+After some fiddling in the beginning, implementation was quite straightforward. The grammar had to be converted into a tree structure, each node representing methods in the Logo.jj file. Most of these methods are writing strings of Java code into the destination file via PrintWriter. It was of course necessary to pay attention to things like indentation and REPCOUNT in- and decreasing.
+
+The REPCOUNT (or for-loop in Java) isn't directly supported by LOGO. We solved that with a similar approach to indentation: An integer keeps track of REPCOUNT, which is in- and decreased when used in tokens like REPEAT.
+
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\chapter{Test}
+\label{chap:test}
+Apart from the provided LOGO files in the logofiles Folder, we used our own test file test.logo for final testing.
+\endgroup
+
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\chapter{Limitations \& Considerations}
+\label{chap:limits}
+This parser only verifies the correctness of the LOGO program on a syntactical level. The semantic verficiation will be performed during the Java compilation of what is produced by our parser.
+
+We might have been faster to solve this project if our group had met in real life for a day, instead of communicating via e-Mail over weeks.
+\endgroup
+\end{document}
