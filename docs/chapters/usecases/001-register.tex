@@ -1,16 +1,50 @@
 \subsection{UC 001: Register}
 \label{uc:001-register}
+
 \begin{tabular}{|l|p{0.6\textwidth}|}
 \hline
 \textbf{Use Case Name} 	&	Register	\\ \hline
-\textbf{Primary Actor} 	&		\\ \hline
-\textbf{Stakeholders}	&		\\ \hline
-\textbf{Preconditions}	&		\\ \hline
+\textbf{Primary Actor} 	&	Guest	\\ \hline
+\textbf{Stakeholders}	&	-	\\ \hline
+\textbf{Preconditions}	&	Der Gast besitzt eine E-Mail-Adresse	\\ \hline
 \textbf{Main Success Scenario}	& 	
 \begin{enumerate}
 	\item Der EnterpriseManager gibt eine valide Emailadresse und zweimal ein sicheres Passwort ein.
 \end{enumerate}
 \\ \hline
 \textbf{Extensions}	&
+	\item Der Benutzer gibt seine Vor- und Nachnamen ein
+	\item Der Benutzer gibt eine valide E-Mail-Adresse und zweimal ein Passwort ein
+	\item Das System prüft, ob es sich um eine gültige E-Mail-Adresse handelt
+	\item Das System überprüft, dass die E-Mail-Adresse nicht bereits verwendet wird
+	\item Das System überprüft, ob die Passwörter identisch sind
+	\item Das System erstellt einen neuen User-Account
+	\item Das System generiert einen Aktivierungslink 
+	\item Das System stellt dem User eine E-Mail mit dem Aktivierungslink zu
+	\item Der User betätigt den Aktivierungslink 
+	\item Das System aktiviert den Account 
+\end{enumerate}
+\\ \hline
+\textbf{Extensions}	& 	
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item 
+\begin{enumerate}
+\item Emailadresse hat nicht ein gültiges Format: System informiert Benutzer eine gültige Adresse einzugeben
+\end{enumerate}
+\item
+\begin{enumerate}
+\item Die Emailadresse wird bereits verwendet: System informiert User dass die Adresse bereits verwendet wird und fordert Benutzer auf eine andere Adresse zu wählen
+\end{enumerate}
+\item
+\begin{enumerate}
+\item Die beiden Passwörter stimmen nicht überein: Das System zwingt User die Passwörter erneut einzugeben
+\end{enumerate}
+\setcounter{enumi}{8}
+\item
+\begin{enumerate}
+\item Der User betätigt den Aktivierungslink nicht innerhalb der konfigurierten Frist: System invalidiert den Link und User muss sich neuen Link zustellen lassen
+\end{enumerate}
+\end{enumerate}
 \\ \hline
 \end{tabular}
