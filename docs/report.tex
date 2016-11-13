@@ -22,7 +22,10 @@
 % Load Standard Packages:
 %---------------------------------------------------------------------------
 \usepackage[standard-baselineskips]{cmbright}
-
+\usepackage{svg}
+\usepackage{underscore}
+\usepackage{transparent}
+\usepackage{import}
 \usepackage[english]{babel}										% german hyphenation
 \usepackage[utf8]{inputenc}  							% Unix/Linux - load extended character set (ISO 8859-1)
 %\usepackage[ansinew]{inputenc}  							% Windows - load extended character set (ISO 8859-1)
@@ -146,13 +149,15 @@
 
 \begin{titlepage}
 
+\graphicspath{{./images/}}
+
 
 % BFH-Logo absolute placed at (28,12) on A4 and picture (16:9 or 15cm x 8.5cm)
 % Actually not a realy satisfactory solution but working.
 %---------------------------------------------------------------------------
 \setlength{\unitlength}{1mm}
 \begin{textblock}{20}[0,0](28,12)
-	\includegraphics[scale=1.0]{BFH_Logo_B.png}
+	\includegraphics[scale=1.0]{\detokenize{BFH_Logo_B.png}}
 \end{textblock}
 
 \begin{textblock}{154}(28,48)
