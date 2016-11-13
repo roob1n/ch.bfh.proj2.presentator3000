@@ -1,5 +1,23 @@
 \chapter{Domain Model}
 \label{chap:domainmodel}
+
+\begingroup
+\setlength{\tabcolsep}{15pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h]
+\centering
+\begin{tabular}{l|c|c|c}
+	\textbf{Features} 	&	\textbf{Silver} 	&	\textbf{Gold}	&	\textbf{Diamond} \\ \hline
+	Anzahl Präsentationen	&	10	&	unlimitiert	&	unlimitiert \\ \hline
+	Anzahl Slides pro Präsentation	&	30	&	unlimitiert	& unlimitiert \\ \hline
+	Anzahl Codebases	&	1	& 	unlimitiert	&	unlimitiert \\ \hline
+	Channels		&	Nein	&	Nein	& 	Ja, unlimitiert	\\ \hline
+	Attachements		&	Nein	&	Nein	&	Ja, unlimitiert \\ \hline
+	Preis	&	\textbf{Gratis}	&	\textbf{CHF 5 / Monat} 	& \textbf{CHF 20 / Monat}
+\end{tabular}
+\end{table}
+\endgroup
+
 \begin{figure}[htbp]
     \small \includesvg[width = 1\textwidth,pdf,path=images/]{erm}
     \caption{Domain Model}
