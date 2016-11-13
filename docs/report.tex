@@ -162,7 +162,7 @@
 \end{textblock}
 
 \begin{textblock}{154}[0,0](28,50)
-	\includegraphics[width=15cm]{head.jpg}			% Titelbild definieren
+	\includegraphics[width=15cm]{images/head}			% Titelbild definieren
 \end{textblock}
 
 \begin{textblock}{154}(28,134)
@@ -256,19 +256,10 @@ Version	\> Date	\> Status		\> Misc.		\\
 %---------------------------------------------------------------------------
 \pagenumbering{arabic}
 
-\chapter{Introduction}
-\label{chap:intro}
-(Intro Text) In order to confirm that the structure of a text or a program is correct, it is necessary to make sure this program is valid in respect to the grammar. This is called parsing. First the lexical analysis groups characters into tokens which can stand for various identifiers, keywords and constants of a language. After that the parser has to ensure that the input text is well structured, and tries to generate a parse tree. Only if a parse tree can be built, is a text or program syntactically correct.
 
-This project is a parser for LOGO in Java via JavaCC.
-
-\begingroup
-\renewcommand{\cleardoublepage}{}
-\renewcommand{\clearpage}{}
-\chapter{Grammar}
-\label{chap:grammar}
-%\lstinputlisting[language=Python,basicstyle=\ttfamily]{../src/LogoGrammar.txt}
-\endgroup
+\include{chapters/introduction}
+\include{chapters/domainmodel}
+\include{chapters/usecases}
 
 \chapter{Solution}
 \label{chap:solution}
@@ -287,6 +278,7 @@ Apart from the provided LOGO files in the logofiles Folder, we used our own test
 \begingroup
 \renewcommand{\cleardoublepage}{}
 \renewcommand{\clearpage}{}
+
 \chapter{Limitations \& Considerations}
 \label{chap:limits}
 This parser only verifies the correctness of the LOGO program on a syntactical level. The semantic verficiation will be performed during the Java compilation of what is produced by our parser.
