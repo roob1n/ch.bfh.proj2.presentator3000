@@ -9,10 +9,8 @@ pdflatex --shell-escape report.tex
 ```
 
 ### Prerequisites
-* scrkbase.sty    2015/07/02 v3.18 KOMA-Script package (KOMA-Script-dependent bas
-* ics and keyval usage)
-* scrbase.sty    2015/07/02 v3.18 KOMA-Script package (KOMA-Script-independent b
-* asics and keyval usage)
+* scrkbase.sty    2015/07/02 v3.18 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
+* scrbase.sty    2015/07/02 v3.18 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
 * keyval.sty    2014/10/28 v1.15 key=value parser (DPC)
 * scrlfile.sty    2015/07/02 v3.18 KOMA-Script package (loading files)
 * tocbasic.sty    2015/07/02 v3.18 KOMA-Script package (handling toc-files)
