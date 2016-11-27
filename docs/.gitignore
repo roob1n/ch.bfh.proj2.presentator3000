@@ -18,3 +18,11 @@
 # BibTeX
 *.bbl
 *.blg
+
+# Texpad Stuff
+.texpadtmp
+
+# SVG Stuff
+Fig.1.tex
+*/*.pdf
+*/*.pdf_tex

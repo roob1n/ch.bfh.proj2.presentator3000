@@ -14,7 +14,7 @@
 	parskip=half,			% set paragraph skip to half of a line
 ]{scrreprt}					% KOMA-script report
 %---------------------------------------------------------------------------
-
+\listfiles
 \raggedbottom
 \KOMAoptions{cleardoublepage=plain}			% Add header and footer on blank pages
 
@@ -22,7 +22,11 @@
 % Load Standard Packages:
 %---------------------------------------------------------------------------
 \usepackage[standard-baselineskips]{cmbright}
-
+\usepackage{svg}
+\setsvg{inkscape=inkscape -z -D,svgpath=images/}
+\usepackage{underscore}
+\usepackage{transparent}
+\usepackage{import}
 \usepackage[english]{babel}										% german hyphenation
 \usepackage[utf8]{inputenc}  							% Unix/Linux - load extended character set (ISO 8859-1)
 %\usepackage[ansinew]{inputenc}  							% Windows - load extended character set (ISO 8859-1)
@@ -75,7 +79,7 @@
 	bookmarksopen = {true},               % opens the bar on the left side
 	bookmarksopenlevel = {0},             % depth of opened bookmarks
   pdftitle = {{Presentator3000, an online presentation tool}},	   	% PDF-property
-  pdfauthor = {{bollm6, schmidrobin}},        					  % PDF-property
+  pdfauthor = {{bollm6, schmr2}},        					  % PDF-property
 	pdfsubject = {Presentator3000},        % PDF-property
 	linkcolor = {linkcolor},              % Color of Links
 	citecolor = {linkcolor},              % Color of Cite-Links
@@ -112,7 +116,7 @@
 %---------------------------------------------------------------------------
 \providecommand{\titel}{Presentator3000}		%  Hier den Titel des Berichts/Thesis eingeben
 \providecommand{\versionnumber}{1.0}			%  Hier die aktuelle Versionsnummer eingeben
-\providecommand{\versiondate}{2016-10-11}		%  Hier das Datum der aktuellen Version eingeben
+\providecommand{\versiondate}{2016-11-13}		%  Hier das Datum der aktuellen Version eingeben
 
 % Set up header and footer
 %---------------------------------------------------------------------------
@@ -146,13 +150,15 @@
 
 \begin{titlepage}
 
+\graphicspath{{./images/}}
+
 
 % BFH-Logo absolute placed at (28,12) on A4 and picture (16:9 or 15cm x 8.5cm)
 % Actually not a realy satisfactory solution but working.
 %---------------------------------------------------------------------------
 \setlength{\unitlength}{1mm}
 \begin{textblock}{20}[0,0](28,12)
-	\includegraphics[scale=1.0]{BFH_Logo_B.png}
+	\includegraphics[scale=1.0]{\detokenize{BFH_Logo_B.png}}
 \end{textblock}
 
 \begin{textblock}{154}(28,48)
@@ -162,7 +168,7 @@
 \end{textblock}
 
 \begin{textblock}{154}[0,0](28,50)
-	\includegraphics[width=15cm]{head.jpg}			% Titelbild definieren
+	\includegraphics[width=15cm]{images/head}			% Titelbild definieren
 \end{textblock}
 
 \begin{textblock}{154}(28,134)
@@ -240,6 +246,8 @@ Version history
 xxxxxxxxxxx\=xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
 Version	\> Date	\> Status		\> Misc.		\\
 0.1	\> 2016-10-11	\> Draft		\> Initial version	\\
+0.2 \> 2016-10-28   \> Draft     \> Added main structure \\
+0.3 \> 2016-11-13   \> Draft    \> Added use cases and diagrams \\
 \end{tabbing}
 
 \end{textblock}
@@ -255,20 +263,11 @@ Version	\> Date	\> Status		\> Misc.		\\
 % Main part:
 %---------------------------------------------------------------------------
 \pagenumbering{arabic}
+\color{black}
 
-\chapter{Introduction}
-\label{chap:intro}
-(Intro Text) In order to confirm that the structure of a text or a program is correct, it is necessary to make sure this program is valid in respect to the grammar. This is called parsing. First the lexical analysis groups characters into tokens which can stand for various identifiers, keywords and constants of a language. After that the parser has to ensure that the input text is well structured, and tries to generate a parse tree. Only if a parse tree can be built, is a text or program syntactically correct.
-
-This project is a parser for LOGO in Java via JavaCC.
-
-\begingroup
-\renewcommand{\cleardoublepage}{}
-\renewcommand{\clearpage}{}
-\chapter{Grammar}
-\label{chap:grammar}
-%\lstinputlisting[language=Python,basicstyle=\ttfamily]{../src/LogoGrammar.txt}
-\endgroup
+\include{chapters/introduction}
+\include{chapters/domainmodel}
+\include{chapters/usecases}
 
 \chapter{Solution}
 \label{chap:solution}
@@ -287,6 +286,7 @@ Apart from the provided LOGO files in the logofiles Folder, we used our own test
 \begingroup
 \renewcommand{\cleardoublepage}{}
 \renewcommand{\clearpage}{}
+
 \chapter{Limitations \& Considerations}
 \label{chap:limits}
 This parser only verifies the correctness of the LOGO program on a syntactical level. The semantic verficiation will be performed during the Java compilation of what is produced by our parser.

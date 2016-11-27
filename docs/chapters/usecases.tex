@@ -1,0 +1,87 @@
+\chapter{Use Cases}
+\label{chap:usecases}
+
+\begin{figure}[htbp]
+	\centering
+    \includesvg[width = 1\textwidth,pdf,path=images/]{usecasediagram}
+    \caption{Use Case Diagramm}
+\end{figure}
+
+
+\section{Use Case Diagramm}
+
+\section{Actors}
+\subsection{Primary Actors}
+\minisec{User}
+\begin{itemize}
+	\item Registrierung im System
+	\item Authentifizierung im System
+	\item Erstellen und Verwalten von Präsentationen
+	\item Erstellen und Verwalten von Slides für Präsentationen
+	\item Verwalten von Codebases
+	\item Erstellen und Verwalten von Code Ausschnitten (Code Fragments)
+	\item Erstellen und Verwalten von Kanälen (Channels)
+	\item Hinzufügen und Verwalten von Anhängen (Attachments)
+\end{itemize}
+
+\minisec{Gast (Guest)}
+\begin{itemize}
+	\item Anschauen von Präsentationen
+	\item Ausdrucken von Präsentationen
+\end{itemize}
+
+\subsection{Supporting Actors}
+\minisec{Mail Server}
+Der Mail Server versendet E-Mails an die User des Systems. Dies trifft für folgende Fälle zu:
+\begin{itemize}
+	\item User registriert sich
+	\item User hat das Passwort vergessen und benötigt neues Passwort
+	\item User teilt Präsentation mit einem User oder einer E-Mail Adresse
+	\item User hat einen neuen Subscriber auf einem seiner Channel
+	\item Neue Präsentation wurde einem abonnierten Channel hinzugefügt
+\end{itemize}
+
+\minisec{Code Provider}
+Der Code Provider stellt ein externes System dar, welches Informationen mit Programmier-Code zur Verfügung stellt. 
+
+\subsection{Offstage Actors}
+-
+
+\section{Use Case Beschreibungen}
+\label{usecase:description}
+
+\input{chapters/usecases/001-register}
+
+\input{chapters/usecases/002-login}
+
+\input{chapters/usecases/003-logout}
+
+\input{chapters/usecases/004-manage-pres}
+
+\input{chapters/usecases/005-manage-slide}
+
+\input{chapters/usecases/006-share-pres}
+
+\input{chapters/usecases/007-view-pres}
+
+\input{chapters/usecases/008-print-pres}
+
+\input{chapters/usecases/009-manage-comment}
+
+\input{chapters/usecases/010-manage-codebase}
+
+\input{chapters/usecases/011-manage-code-frag}
+
+\input{chapters/usecases/012-update-external-res}
+
+\input{chapters/usecases/013-manage-channel}
+
+\input{chapters/usecases/014-subscribe-channel}
+
+\input{chapters/usecases/015-bookmark-pres}
+
+\input{chapters/usecases/016-manage-profile}
+
+\input{chapters/usecases/017-manage-attachments}
+
+\input{chapters/usecases/018-manage-templates}

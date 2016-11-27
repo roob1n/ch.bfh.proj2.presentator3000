@@ -1,0 +1,36 @@
+\subsection{UC 002: Login}
+\label{uc:002-login}
+
+\begin{tabular}{|l|p{0.6\textwidth}|}
+\hline
+\textbf{Use Case Name} 	&	Login	\\ \hline
+\textbf{Primary Actor} 	&	User	\\ \hline
+\textbf{Stakeholders}	&	-	\\ \hline
+\textbf{Preconditions}	&	Der User ist im System registriert (\nameref{uc:001-register}) und hat seinen Account aktiviert.	\\ \hline
+\textbf{Main Success Scenario}	& 	
+\begin{enumerate}
+	\item Der User gibt seine E-Mail-Adresse und sein Passwort ein
+	\item Das System überprüft ob ein Account mit dieser E-Mail Adresse besteht
+	\item Das System überprüft, ob das Passwort mit dem des Accounts übereinstimmt
+	\item Das System überprüft, ob der Account bereits aktiviert wurde
+	\item Der User wird in das System eingeloggt
+\end{enumerate}
+\\ \hline
+\textbf{Extensions}	& 	
+\begin{enumerate}
+\setcounter{enumi}{1}
+    \item
+    \begin{enumerate}
+    \item Es existiert kein Account mit der eingegebenen E-Mail-Adresse: Das System macht den User darauf aufmerksam
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+    \item Das eingegebene Passwort stimmt nicht mit dem Passwort des Accounts überein: Der User wird darauf hingewiesen, dass das Passwort falsch ist und er kann es noch einmal eingeben
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+    \item Der Account ist noch nicht aktiviert, was bedeutet, der User hat den Aktivierungslink noch nicht verwendet: Dem User wird angeboten, den Aktivierungslink noch einmal zu versenden
+    \end{enumerate}
+\end{enumerate}
+\\ \hline
+\end{tabular}
