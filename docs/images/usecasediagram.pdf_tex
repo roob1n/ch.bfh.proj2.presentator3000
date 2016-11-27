@@ -48,46 +48,51 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.81819839)%
+  \begin{picture}(1,0.87534975)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{usecasediagram.pdf}}%
-    \put(0.52137967,0.77485861){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Register}}}%
+    \put(0.52137967,0.83200997){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Register}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{usecasediagram.pdf}}%
-    \put(0.52709481,0.72246986){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Login}}}%
+    \put(0.52709481,0.77962122){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Login}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{usecasediagram.pdf}}%
-    \put(0.52137967,0.67008111){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Logout}}}%
+    \put(0.52137967,0.72723248){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Logout}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{usecasediagram.pdf}}%
-    \put(0.42136479,0.59197425){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Presentation}}}%
+    \put(0.42136479,0.64912561){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Presentation}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{usecasediagram.pdf}}%
-    \put(0.62710969,0.53768046){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Share Presentation}}}%
+    \put(0.62710969,0.59483182){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Share Presentation}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{usecasediagram.pdf}}%
-    \put(0.70045394,0.59768939){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Slide}}}%
+    \put(0.70045394,0.65484075){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Slide}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{usecasediagram.pdf}}%
     \put(0.25086322,0.16143399){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Print Presentation}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{usecasediagram.pdf}}%
     \put(0.29753684,0.22239545){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{View Presentation}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{usecasediagram.pdf}}%
-    \put(0.92715434,0.50338964){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Mail Server}}}%
+    \put(0.92715434,0.560541){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Mail Server}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{usecasediagram.pdf}}%
-    \put(0.48994642,0.00045766){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Guest}}}%
+    \put(0.49089894,0.00045766){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Guest}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{usecasediagram.pdf}}%
-    \put(0.40802947,0.49481694){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Comment}}}%
+    \put(0.40802947,0.5519683){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Comment}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{usecasediagram.pdf}}%
-    \put(0.92715434,0.31098006){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Code Provider}}}%
+    \put(0.92715434,0.36813142){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Code Provider}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=13]{usecasediagram.pdf}}%
-    \put(0.5899613,0.46052612){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Codebase}}}%
+    \put(0.5899613,0.51767748){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Codebase}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=14]{usecasediagram.pdf}}%
-    \put(0.66711564,0.4052798){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Code Fragment}}}%
+    \put(0.66711564,0.46243117){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Code Fragment}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=15]{usecasediagram.pdf}}%
-    \put(0.51090192,0.35098601){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Update External Resources}}}%
+    \put(0.51090192,0.40813737){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Update External Resources}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=16]{usecasediagram.pdf}}%
-    \put(0.62234708,0.24239842){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Subscribe Channel}}}%
+    \put(0.62234708,0.29954978){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Subscribe Channel}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=17]{usecasediagram.pdf}}%
-    \put(0.55471796,0.29573969){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Channel}}}%
+    \put(0.55471796,0.35289106){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Channel}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=18]{usecasediagram.pdf}}%
-    \put(0.28134395,0.28716699){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Profile}}}%
+    \put(0.65568537,0.24335095){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Attachments}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=19]{usecasediagram.pdf}}%
-    \put(0.14703825,0.78819393){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{System}}}%
+    \put(0.14703825,0.84534529){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{System}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=20]{usecasediagram.pdf}}%
-    \put(0.02225778,0.47005135){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{User}}}%
+    \put(0.02225778,0.52720271){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{User}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=21]{usecasediagram.pdf}}%
+    \put(0.26705611,0.28716699){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Profile}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=22]{usecasediagram.pdf}}%
+    \put(0.65187528,0.18810463){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Manage Templates}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=23]{usecasediagram.pdf}}%
   \end{picture}%
 \endgroup%
