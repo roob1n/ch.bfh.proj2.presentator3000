@@ -1,0 +1,23 @@
+\chapter{Technologien}
+\label{chap:techstack}
+
+\section{Frontend}
+Für die Entwicklung moderner Webanwendungen stehen viele Verschiedene Boilerplates, Libraries und Frameworks zu Verfügung. Deshalb ist es sinnvoll, sich mit den Technologien auseinander zu setzen und sich schliesslich für eine Variante zu entscheiden. Um bei der Entwicklung der Applikation effizient zu sein, ist es nötig, diejenigen Technologien auszuwählen, die das Schreiben von Code minimieren und schnell erlernbar sind. Für eine moderne Web-App werden deshalb häufig Frameworks gegenüber purem JavaScript oder JQuery bevorzugt. Solche Frameworks sind dazu ausgelegt, mit API zu kommunizieren und erhaltene Daten aufzubereiten und darzustellen. Hier eine Auswahl:
+
+\begin{itemize}
+	\item \textbf{AngularJS}
+	\item \textbf{Backbone.js}
+	\item \textbf{Knockout.js}
+	\item \textbf{Vue.js}
+\end{itemize}
+
+Von den oben genannten ist uns bei der Evaluierung \emph{Vue.js} ins Auge gestochen. Nach Betrachtung der Dokumentation und Gesprächen mit Entwicklerkollegen, die \emph{vue} bereits verwendet haben, konnten wir uns darauf festlegen. \emph{Vue.js} ist ein Framework, welches das MVVM Entwurfsmuster umsetzt und ist gemäss Angaben der Entwickler einfacher zu erlernen als andere ähnliche Frameworks.
+
+Für die Darstellung der Präsentation wurde \emph{reveal.js} ausgewählt. Es handelt sich hierbei um ein Framework, welches die Erstellung und Animation von HTML-Präsentationen erleichtert. 
+
+Um den eingebetteten Code auf den Slides mit Syntax-Highlighting lesbarer zu machen, wurde eine Library names \emph{highlight.js} ausgewählt. Eine Alternative dazu wäre \emph{Prism JS} gewesen. 
+
+
+\section{Backend}
+
+Um die Datenpersistenz sicher und stabil zu machen, wird häufig auch im Backend ein Framework eingesetzt. Hier hängt der Entschluss vor allem vom verwendeten Betriebssystem und der präferierten Programmiersprache ab. Es wurde in erster Linie darauf geachtet, dass die Applikation möglichst einfach auf ein Produktionssystem aufgespielt werden kann. Es bietet sich PHP als Programmiersprache an, da diese auf den meisten Webservern schon installiert ist. Auch hier gibt es diverse Frameworks. Der Entscheid fiel auf Laravel, da es einfach zu erlernen ist und das Wissen momentan in Fachkreisen sehr gefragt ist. Laravel kann mit verschiedenen Datenbanken zusammen verwendet werden. Schliesslich wurde MySQL verwendet, da auch dies schon auf vielen Webservern vorhanden ist, was wiederum die Einrichtung eines produktiven System erleichtert. 

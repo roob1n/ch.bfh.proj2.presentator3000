@@ -1,0 +1,113 @@
+\chapter{Anforderungen}
+\label{chap:requirements}
+
+\section{Ziel}
+\label{sec:ziel}
+
+\subsection{Hauptziel}
+Das Ziel ist es, eine Applikation zu entwickeln, welche die Erstellung und das Vorführen von Präsentationen ermöglicht. Die Funktionalitäten sollen "as a service" im Browser angeboten werden.
+
+\begingroup
+\setlength{\tabcolsep}{10pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.5}
+\subsection{Unterziele}
+\begin{tabularx}{\textwidth}{ |l|X| }
+  \hline
+  \textbf{Z 1}	& \textbf{Wirtschaftliche Ziele}	\\	\hline
+  Z 1.1	& Der Entwicklungsaufwand für die Umsetzung eines System ist bekannt.  	\\	\hline
+  Z 1.2	& Die Betriebskosten für ein umgesetztes System mit Skalierung ist bekannt.  	\\	\hline
+  Z 1.3	& Es liegt eine Beurteilung des Marktpotentials vor.  	\\	\hline
+  Z 1.4	& Es wurde ein Konzept zur Monetarisierung (Geschäftsmodell) entwickelt. 	\\	\hline
+  \hline
+  \textbf{Z 2}	& \textbf{Technische Ziele}	\\	\hline
+  Z 2.1	& Die Eignung möglicher Frameworks und Technologien für die Umsetzung des Backends wurde geprüft und ein Typenentscheid gefällt.	\\	\hline
+  Z 2.2	& Die Eignung möglicher Frameworks und Technologien für die Umsetzung des Frontends wurde geprüft und ein Typenentscheid gefällt.	\\	\hline  
+  Z 2.3	& Es existiert eine Umsetzung der Applikation, welche die Prognose zur Weiterentwicklung unterstützt (Prove of Concept) \\	\hline    
+  Z 2.4	& Es ist eine Schnittstelle zwischen Frontend und Backend definiert, um die Kommunikation zwischen den Applikationsteilen zu vereinheitlichen. \\	\hline   
+  \end{tabularx}
+\endgroup
+
+
+\section{Systemkontext}
+\label{sec:systemkontext}
+Der Systemkontext umfasst mehrere Teilbereiche. Der Anwender sieht jeweils nur das Frontend, welches als Single-Page-Application ausgeliefert wird. Die Kopplung zur Datenverwaltung im Backend (Server) ist sehr lose. Dies erlaubt, nach Bedarf Teile des Systems neu zu entwickeln oder Technologien zu ersetzen, wenn diese Veraltet sind, ohne das ganze System neu zu bauen. 
+
+Die Darstellung (View) wird als Webinterface an den Webbrowser des Benutzers ausgeliefert. Er benötigt somit keine zusätzliche Software. Die Ausgabe des Frontend hängt von der Verwendung ab und kann auf einem Monitor, Beamer oder auch Smartphone erfolgen. Wird beispielsweise eine Präsentation vorgeführt, muss sie auf einem Projektor oder einem grossen Bildschirm dargestellt werden. Der Nutzer will aber gleichzeitig die Präsentation steuern und kann auf seinem Smartphone Notizen zur aktuellen Folie einsehen. Er kann dafür aber auch seinen Laptop verwenden. Das Layout soll deshalb \textbf{responsive} sein. Da das Gerät des Users dem System nicht zum Voraus bekannt ist, kann die Darstellung (View) keine systembezogenen Funktionalitäten voraussetzen, sprich muss mit einer grossen Anzahl von Browsern kompatibel sein.
+
+Das Backend soll wie bereits erwähnt technologisch möglichst unabhängig von der Darstellung sein. Es muss zudem auf einem System zu laufen kommen, welches auf Geschwindigkeit optimiert ist. Daten sollen schnell geschrieben und gelesen werden. 
+
+\section{Anforderungen}
+\label{sec:anforderungen}
+
+\subsection{Einführung}
+Im folgenden Kapitel werden die Anfordungen, die sich für das Projekt ergeben, dokumentiert. In der Detailbeschreibung wurde die natürlichsprachige Form gewählt.
+
+\subsubsection{Legende und ergänzende Hinweise}
+
+\minisec{Priorität (P)}
+Die Prioritäten sind wie folgt gegliedert:
+\begin{itemize}
+	\item 0: Optional
+	\item 1: Niedrige Priorität
+	\item 2: Mittlere Priorität
+	\item 3: Hohe Priorität
+\end{itemize}
+
+\minisec{Variabilität (V)}
+\begin{itemize}
+	\item 1: Niedrige Variabilität
+	\item 2: Mittlere Variabilität
+	\item 3: Hohe Variabilität
+\end{itemize}
+
+\minisec{Komplexität (K)}
+\begin{itemize}
+	\item 1: Niedrige Komplexität
+	\item 2: Mittlere Komplexität
+	\item 3: Hohe Komplexität
+\end{itemize}
+
+\minisec{Risiko (R)}
+Aus den drei Faktoren Priorität, Variabilität und Komplexität wurde das Risiko im gesamten Projektrahmen errechnet. Die Faktoren wurden unterschiedliche gewichtet, Komplexität am höchsten und Priorität am tiefsten. 
+
+\minisec{Ergänzungen}
+Unter Quelle ist jeweils ersichtlich, woher die Anforderung stammt. Folgende Abkürzungen werden verwendet:
+\begin{itemize}
+	\item RE: Requirement Engineering
+	\item M: Meeting
+	\item B: Betreuer
+\end{itemize}
+In der tabellarischen Form ist jeweils in der Spalte \emph{Ziel} ersichtlich, auf welches Unterziel sich die Anforderung bezieht. Es ist auch möglich, dass sich die Anforderung direkt auf das Hauptziel bezieht; in diesem Fall ist \emph{HZ} notiert.
+
+\subsection{Funktionale Anforderungen}
+\subsubsection{Übersicht}
+\begingroup
+\setlength{\tabcolsep}{10pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{ |l|X|c|c|c|c|c|c| }
+  \hline
+	Nr.	&	Kurzbeschrieb	& 	P	& 	V	&	K	&	R	&	Quelle	&	Ziel	\\	\hline
+	R 1	&	Das System ermöglicht es Nutzern, sich zu registrieren &	3	&	1	&	1	& 	1	&	RE	&	HZ	\\	\hline
+	R 2	&	Das System ermöglicht es dem Nutzer, Präsentationen zu erstellen &	3	&	2	&	3	& 	3	&	C	&	Z 2.3	\\	\hline
+	R 3	&	Das System ermöglicht es dem Nutzer, Slides zu erstellen und einer Präsentation hinzuzufügen &	3	&	1	&	2	&	2	&	M	&	HZ	\\ \hline
+	R 4	&	Das System ermöglicht es dem Nutzer, Vorlagen (Templates) für Slides zu erstellen und diese beim erstellen von neuen Slides zu verwenden		&	1	&	2	& 	3	&	3	&	M	&	HZ	\\ \hline
+	R 5	&	Das System ermöglicht es dem Nutzer, Themas (Themes) zu erstellen	&	0	& 	1	&	3	& 	0	&	C	&	? \\ \hline
+	R 6	&	Das System ermöglicht es dem Nutzer, erstellte Präsentationen per Webbrowser zu präsentieren	&	3	& 	1	&	3	& 	0	&	C	&	HZ \\ \hline
+	R 7	&	Das System ermöglicht es dem Nutzer, erstellte Präsentationen mit anderen Benutzer zu teilen	&	1	& 	1	&	2	& 	0	&	C	&	HZ \\ \hline
+	R 8	&	Das System ermöglicht es dem Nutzer, Beilagen zu Präsentationen hinzuzufügen	&	1	& 	1	&	2	& 	0	&	RE	&	HZ \\ \hline
+	R 9	&	Das System ermöglicht es dem Nutzer, Präsentationen in Channels zu organisieren	&	1	& 	1	&	2	& 	0	&	RE	&	HZ \\ \hline
+\end{tabularx}
+\endgroup
+
+\subsection{Qualitätsanforderungen}
+
+\subsubsection{Übersicht}
+\begingroup
+\setlength{\tabcolsep}{10pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{ |l|X|c|c|c|c|c|c| }
+  \hline
+	Nr.	&	Kurzbeschrieb	& 	P	& 	V	&	K	&	R	&	Quelle	&	Ziel \\	\hline
+	Q 1	&	Bei der Vorführung einer Präsentation beträgt die Latenz zwischen Eingabe und Ausgabe weniger als 30 ms	&	2	&	1	&	2	& 	2	&	RE	&	?	\\	\hline
+\end{tabularx}
+\endgroup

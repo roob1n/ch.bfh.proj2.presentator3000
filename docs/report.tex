@@ -41,6 +41,12 @@
 \usepackage{booktabs}													% package for nicer tables
 \usepackage{tocvsec2}													% provides means of controlling the sectional numbering
 \usepackage{listings}
+\usepackage{tabularx}
+
+\usepackage{listings}
+
+\usepackage{pdflscape}
+%\usepackage{lscape}
 %---------------------------------------------------------------------------
 
 % Load Math Packages
@@ -260,37 +266,20 @@ Version	\> Date	\> Status		\> Misc.		\\
 
 %---------------------------------------------------------------------------
 
-% Main part:
-%---------------------------------------------------------------------------
+%w--------------------------------------------------------
 \pagenumbering{arabic}
 \color{black}
 
 \include{chapters/introduction}
+\include{chapters/requirements}
+\include{chapters/techstack}
 \include{chapters/domainmodel}
 \include{chapters/usecases}
+\include{chapters/mockups}
+\include{chapters/dokumentation-frontend}
+\include{chapters/dokumentation-api}
+\include{chapters/testing}
+\include{chapters/fazit}
 
-\chapter{Solution}
-\label{chap:solution}
-After some fiddling in the beginning, implementation was quite straightforward. The grammar had to be converted into a tree structure, each node representing methods in the Logo.jj file. Most of these methods are writing strings of Java code into the destination file via PrintWriter. It was of course necessary to pay attention to things like indentation and REPCOUNT in- and decreasing.
 
-The REPCOUNT (or for-loop in Java) isn't directly supported by LOGO. We solved that with a similar approach to indentation: An integer keeps track of REPCOUNT, which is in- and decreased when used in tokens like REPEAT.
-
-\begingroup
-\renewcommand{\cleardoublepage}{}
-\renewcommand{\clearpage}{}
-\chapter{Test}
-\label{chap:test}
-Apart from the provided LOGO files in the logofiles Folder, we used our own test file test.logo for final testing.
-\endgroup
-
-\begingroup
-\renewcommand{\cleardoublepage}{}
-\renewcommand{\clearpage}{}
-
-\chapter{Limitations \& Considerations}
-\label{chap:limits}
-This parser only verifies the correctness of the LOGO program on a syntactical level. The semantic verficiation will be performed during the Java compilation of what is produced by our parser.
-
-We might have been faster to solve this project if our group had met in real life for a day, instead of communicating via e-Mail over weeks.
-\endgroup
 \end{document}

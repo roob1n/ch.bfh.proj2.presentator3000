@@ -1,0 +1,128 @@
+\chapter{Dokumentation API}
+\label{chap:doc-api}
+\section{Grundsatz}
+Die ganze Service-Schicht, also das Backend oder auch API genannt, ist eigentlich eine Abstraktion des CRUD-Schemas. CRUD ist ein Akronym und steht für Create, Read, Update und Delete. Dies sind die grundsätzlichen Datenbank-Optionen. Die API erlaubt es, dem Frontend diese Operationen in der Presistenzschicht auszuüben. Für RESTful APIs ist es üblich, die unterschiedlichen HTTP-Methoden, umgangssprachlich auch als HTTP Verbs bezeichnent, zu verwenden. (Beschrieben in RFC 2616, Hypertext Transfer Protocol - HTTP 1.1\footnote{\url{https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html}}).
+
+Die Zuordnung lautet wie folgt: \\\\
+\vspace{0.5cm}
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{CRUD-Opertaion} & \textbf{HTTP-Methode} & \textbf{Bedeutung} \\ \hline	
+Create & POST & Eine neue Resource anlegen \\ \hline	
+Read & GET & Eine Resource lesen, anschauen \\ \hline	
+Update & PUT / PATCH & Eine Resource aktualisieren \\ \hline	
+Delete & DELETE & Eine Resource löschen \\ \hline	
+\end{tabular}
+\vspace{0.3cm}
+
+Als Antworten werden im HTTP Header Statuscodes gesetzt. Auch diese sind im \emph{RFC 2616} beschrieben. Hier findet ebenfalls eine Zuordnung statt:\\\\
+\begin{tabular}{|l|l|p{9cm}|}
+\hline
+\textbf{Code} & \textbf{Bezeichnung} & \textbf{Bedeutung in der API} \\ \hline	
+200 &	OK	& Anfrage erfolgreich, Resource im Content (bei GET) oder Änderung erfolgreich, geänderte Resource im Content (bei PUT/PATCH)\\ \hline
+201 &	CREATED &	Neue Resource angelegt \\ \hline
+204 &	NO CONTENT &	Resource erfolgreich gelöscht \\ \hline
+404 &	NOT FOUND	& 	Resource nicht gefunden \\ \hline
+422 &	UNPROCESSABLE ENTITY	&	Die Angehängten Daten entsprechen nicht dem erwarteten Format (z.B. wenn Attribute fehlen bei einem POST)\\ \hline
+\end{tabular}
+\vspace{0.3cm}
+
+\section{Anmerkungen zur Implementation}
+Bei der Implementation wurden schliesslich Routen angelegt \emph{service/routes/api.php}, wo beschrieben wird welche URLs akzeptiert werden und delegiert wird, welcher Controller zuständig ist. Wird eine Resource direkt als \emph{Route::resource()} erfasst, findet bereits eine Zuteilung der Methoden zu den entsprechenden HTTP-Verben statt. Ansonsten kann die Methode spezifiziert werden: \emph{Route::get('slides/{id}/comments', 'CommentsController@index');}. Hier wird die Methode \textbf{index} im \textbf{CommentsController} verwendet, falls die URI \emph{api/slides/{slide-id}/comments} aufgerufen wird. In der entsprechenden Methode werden dann \emph{Models} angelegt, aus der Datenbank geholt oder Datensätze gelöscht. Hier bietet Laravel mit Eloquent die entsprechenden Schnittstellen, sodass keine SQL-Queries von Hand geschrieben werden müssen. Wird eine Antwort als JSON zurückgegeben, laufen die Datensätze durch eine weitere Klasse: Ein Transformer. Dieser hat die Aufgabe, die Daten so aufzubereiten, dass das ausgegebene JSON-Objekt korrekt formatiert ist und nur die Daten enthält, welche für das Frontend benötigt werden. So werden hier beispielsweise die PHP-Datumsobjekte vereinfacht und nur ein Date-String zurückgegeben für das Feld \emph{updated_at}. Auch werden hier Links für eingebettete (nested) Resourcen erzeugt. Der Zweck wird später in dieser Dokumentation noch erläutert.
+
+\section{Routen}
+In der nachfolgenden Tabelle sind die Routen aufgeführt, welche die API zur Verfügung stellt. Es ist jeweils angegeben, welche HTTP-Methode verwendet werden muss, um auf die Resource mit der entsprechenden Aktion zuzugreifen. In den geschweiften Klammern sind die Parameter angegeben, welche direkt per URI mitgegeben werden. Für die Methoden \textbf{POST} sowie \textbf{PUT} beziehungsweise \textbf{PATCH} muss ein Content mitgegeben werden. Der Content-Typ muss deswegen auf \emph{application/json} gesetzt werden.
+
+\begin{table}[H]
+\scriptsize	 
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Methode} & \textbf{URI} & \textbf{Name} & \textbf{Action} \\ \hline
+ GET\&HEAD &  /  & direkt    & web \\ \hline
+ GET\&HEAD  & /api  & direkt    & \\ \hline
+ POST & api/attachements & attachements.store & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}AttachementsController\@store  \\ \hline
+ GET\&HEAD & api/attachements  & attachements.index & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}AttachementsController\@index  \\ \hline
+ DELETE & api/attachements/\{attachement\} & attachements.destroy & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}AttachementsController\@destroy  \\ \hline
+  PUT\&PATCH  & api/attachements/\{attachement\} & attachements.update & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}AttachementsController\@update  \\ \hline
+ GET\&HEAD & api/attachements/\{attachement\} & attachements.show & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}AttachementsController\@show  \\ \hline
+ POST & api/channels  & channels.store  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}ChannelsController\@store  \\ \hline
+ GET\&HEAD & api/channels  & channels.index  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}ChannelsController\@index  \\ \hline
+ DELETE & api/channels/\{channel\}  & channels.destroy & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}ChannelsController\@destroy  \\ \hline
+  PUT\&PATCH  & api/channels/\{channel\}  & channels.update  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}ChannelsController\@update  \\ \hline
+ GET\&HEAD & api/channels/\{channel\}  & channels.show  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}ChannelsController\@show  \\ \hline
+ POST & api/channels/\{cid\}/presentations/\{pid\} & add_presentation_to_channel & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}ChannelsController\@add  \\ \hline
+ GET\&HEAD & api/channels/\{id\}/presentations & channel_presentations & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}PresentationsController\@index  \\ \hline
+ GET\&HEAD & api/comments  & comments.index  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}CommentsController\@index  \\ \hline
+ POST & api/comments  & comments.store  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}CommentsController\@store  \\ \hline
+ GET\&HEAD & api/comments/\{comment\}  & comments.show  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}CommentsController\@show  \\ \hline
+  PUT\&PATCH  & api/comments/\{comment\}  & comments.update  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}CommentsController\@update  \\ \hline
+ DELETE & api/comments/\{comment\}  & comments.destroy & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}CommentsController\@destroy  \\ \hline
+ POST & api/presentations  & presentations.store & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}PresentationsController\@store  \\ \hline
+ GET\&HEAD & api/presentations  & presentations.index & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}PresentationsController\@index  \\ \hline
+ POST & api/presentations/\{id\}/attachements & add_attachement_to_presentation & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}AttachementsController\@store  \\ \hline
+ GET\&HEAD & api/presentations/\{id\}/attachements & presentation_attachements & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}AttachementsController\@index  \\ \hline
+ POST & api/presentations/\{id\}/slides & add_slide_to_presentation & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}SlidesController\@store  \\ \hline
+ GET\&HEAD & api/presentations/\{id\}/slides & presentation_slides & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}SlidesController\@index  \\ \hline
+  PUT\&PATCH  & api/presentations/\{presentation\} & presentations.update & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}PresentationsController\@update  \\ \hline
+ DELETE & api/presentations/\{presentation\} & presentations.destroy & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}PresentationsController\@destroy  \\ \hline
+ GET\&HEAD & api/presentations/\{presentation\} & presentations.show & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}PresentationsController\@show  \\ \hline
+ GET\&HEAD & api/slides  & slides.index  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}SlidesController\@index  \\ \hline
+ POST & api/slides  & slides.store  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}SlidesController\@store  \\ \hline
+ GET\&HEAD & api/slides/\{id\}/comments & slide_comments  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}CommentsController\@index  \\ \hline
+ POST & api/slides/\{id\}/comments & add_comment_to_slide & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}CommentsController\@store  \\ \hline
+  PUT\&PATCH  & api/slides/\{slide\}  & slides.update  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}SlidesController\@update  \\ \hline
+ DELETE & api/slides/\{slide\}  & slides.destroy  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}SlidesController\@destroy  \\ \hline
+ GET\&HEAD & api/slides/\{slide\}  & slides.show  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}SlidesController\@show  \\ \hline
+ POST & api/templates  & templates.store  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}TemplatesController\@store  \\ \hline
+ GET\&HEAD & api/templates  & templates.index  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}TemplatesController\@index  \\ \hline
+ DELETE & api/templates/\{template\} & templates.destroy & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}TemplatesController\@destroy  \\ \hline
+  PUT\&PATCH  & api/templates/\{template\} & templates.update & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}TemplatesController\@update  \\ \hline
+ GET\&HEAD & api/templates/\{template\} & templates.show  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}TemplatesController\@show  \\ \hline
+ POST & api/user  & user.store  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}UserController\@store  \\ \hline
+ GET\&HEAD & api/user  & user.index  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}UserController\@index  \\ \hline
+ GET\&HEAD & api/user/create  & user.create  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}UserController\@create  \\ \hline
+ DELETE & api/user/\{user\}  & user.destroy  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}UserController\@destroy  \\ \hline
+ GET\&HEAD & api/user/\{user\}  & user.show  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}UserController\@show  \\ \hline
+  PUT\&PATCH  & api/user/\{user\}  & user.update  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}UserController\@update  \\ \hline
+ GET\&HEAD & api/user/\{user\}/edit  & user.edit  & App\textbackslash{}Http\textbackslash{}Controllers\textbackslash{}UserController\@edit  \\ \hline
+ \end{tabular}
+\end{table}
+ 
+\section{Datenaustausch}
+ Die Datentransfers zum Frontend werden mittels der JavaScript Object Notation (JSON) realisiert. JSON ist ein kompaktes Datenformat, welches von der Programmiersprache unabhängig ist. Es ist der quasi-Standard für RESTful APIs. Da ursprünglich aus dem JavaScript stammt, benötigt Javascript keinen Parser, was zu einem Performance Gewinn führt. 
+ 
+\subsection{Beispiel}
+Zur Verdeutlichung wird hier nachfolgend ein kleines Beispiel aufgezeigt: Hier wird vom Frontend aus eine Anfrage für ein "Attachment" gesendet, also ein HTTP-Request vom Typ "GET" an die URI \emph{http://presentator3000.app/api/attachements/2}. Im Content der Response ist folgendes JSON-Objekt zu finden: 
+\begin{lstlisting}[caption=JSON als Antwort auf einen GET-Request]
+{
+  "id" : 2,
+  "filename" : "eb793ea81f9c9a.xpm",
+  "presentation" : "http://presentator3000.app/api/presentations/14",
+  "updated_at" : "2016-12-27 11:02:19"
+}
+\end{lstlisting}
+
+Diese Informationen können nun vom Frontend verarbeitet werden und dem User im Browser angezeigt werden. Um das Beispiel zu erweitern, ist nachfolgenden das JSON Objekt aufgeführt, welches gesandt werden muss, um eine neue Slide anzulegen. Hier wird ein POST-Request verschickt an \emph{presentator3000.app/api/presentation/12/slides}. Dies bedeutet, dass eine neue Slide-Resource bei der Präsentation mit der ID \emph{12} angelegt werden soll:
+
+\begin{lstlisting}[caption=POST Request um eine neue Slide anzulegen]
+{
+  "content" : "<h1>Eine neue Slide</h1><p>Hier ist eine neue Slide</p>",
+  "shared" : false
+}
+\end{lstlisting}
+
+Dies wird von der API, also dem Backend verarbeitet. Zuerst wird überprüft, ob die nötigen Informationen vorhanden sind. Bei einer Slide ist dies nur das Attribut \emph{content}. Das Attribut \emph{shared} ist optional. Wird es nicht mitgegeben, greift der default Wert und der ist in diesem Fall \textbf{false}. Wird ein zwingender (required) Wert nicht mitgeliefert, antwortet die API mit einem Fehler. Hierzu wird eine HTTP-Response mit dem entsprechenden Statuscode abgesetzt. In diesem Fall ist dies der Code \emph{422}, welcher für \emph{HTTP UNPROCESSABLE ENTITY} steht. Ist alles wie erwartet vorhanden, wird ein neues PHP-Objekt erzeugt und persistiert. Beim Eintrag in die Datenbank wird dabei eine ID generiert. Die ID wird unter Umständen im Frontend für die Weiterverarbeitung benötigt. Deshalb wurde der Service so umgesetzt, dass auch bei jedem POST, PUT oder PATCH ein Body mitgegeben wird, welcher gleich das erzeugte Objekt (inklusive ID) enthält. Diese Response sähe im obigen Beispiel wie folgt aus:
+
+\begin{lstlisting}[caption=HTTP Response für eine neu anglegte Slide]
+{
+  "data": {
+    "id": 21,
+    "content": "<h1>Eine neue Slide</h1><p>Hier ist eine neue Slide</p>",
+    "shared": false,
+    "comments": "http://presentator3000.app/api/slides/21/comments",
+    "updated_at": "2016-12-27 08:02:10"
+  },
+  "message": "Slide successfully created."
+}
+\end{lstlisting}
+Der HTTP-Statuscode im Erfolgsfall lautet \emph{201 - CREATED}. Wie ersichtlich ist, beinhaltet die Antwort ein JSON Objekt mit zwei Attributen erster Ebene. Einerseits die Daten (\emph{data}) und andererseits die Meldung (\emph{message}). Im Daten-Attribut ist ein weiteres Objekt enthalten, die erstellte Slide. Hier wird nicht nur die ID zurückgegeben, sondern auch einen Link auf genestete Attribute, hier beispielsweise die Kommentare (\emph{Comments}). Statt diese direkt auszugeben, was zu einer Performance-Einbusse führen könnte, wird lediglich der URI mitgegeben. Das Frontend kann dann direkt auf diese Resource zugreifen. Dieses Prinzip schneidet das Programmier-Paradigma \textbf{HATEOAS}\footnote{HATEOAS steht für Hypermedia As The Engine Of Application State und ist eine Erweiterung der klassischen REST Architektur beziehungsweise die höchste Form der Abstraktion zwischen Frontend und Backend. (\url{https://en.wikipedia.org/wiki/HATEOAS})} an. Natürlich ist dies bloss der Anfang. Man könnte weiter auch URLs für die verschiedenen CRUD Operationen aufführen, wie beispielsweise die Links für Update oder Delete einer Resource. 

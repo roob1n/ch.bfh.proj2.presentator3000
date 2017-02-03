@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>240</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Plan
+--
+id: int
+cost_per_month: double
+max_presentations: int
+max_slides_pp: int
+max_codebases: int
+enable_channels: bool
+enable_attachments: bool
+enable_templates: bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>240</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>User
+--
+id: int
+name: String
+email: String
+password: String
+userspace: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>530</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Presentation
+--
+id: int
+title: String
+description: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>750</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Slide
+--
+id: int
+content: String
+shared: bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>750</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Comment
+--
+id: int
+content: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>100</x>
+      <y>340</y>
+      <w>140</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+&lt; belongs to</panel_attributes>
+    <additional_attributes>100.0;410.0;100.0;350.0;10.0;350.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>760</y>
+      <w>330</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+belongs to &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>340</y>
+      <w>70</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+has &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>240</y>
+      <w>240</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+has &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>610</y>
+      <w>480</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..n
+contains &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;440.0;60.0;440.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>490</y>
+      <w>170</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Channel
+--
+id: int
+title: String
+description: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>570</y>
+      <w>360</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..n
+is organized in &gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;320.0;40.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>280</y>
+      <w>300</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+&lt; belongs to</panel_attributes>
+    <additional_attributes>260.0;260.0;190.0;260.0;190.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>840</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Template
+--
+id: int
+title: String
+markup: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>260</y>
+      <w>210</w>
+      <h>650</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+&lt; belongs to</panel_attributes>
+    <additional_attributes>190.0;620.0;10.0;620.0;10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>960</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Codebase
+--
+id: int
+title: String
+url: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>940</y>
+      <w>210</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Codefragment
+--
+id: int
+path: String
+ref: String
+line_start: int
+line_end: int
+last_updated: Date
+cache: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>1000</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+&lt; belongs to</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>830</y>
+      <w>190</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..n
+&lt; contains</panel_attributes>
+    <additional_attributes>10.0;180.0;150.0;180.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>400</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Attachment
+--
+id: int
+title: filename</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>310</y>
+      <w>190</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+&lt; belongs to</panel_attributes>
+    <additional_attributes>80.0;90.0;80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>470</y>
+      <w>150</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+has &gt;</panel_attributes>
+    <additional_attributes>90.0;10.0;90.0;90.0;10.0;90.0</additional_attributes>
+  </element>
+</diagram>

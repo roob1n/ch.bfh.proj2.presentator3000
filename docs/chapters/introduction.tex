@@ -1,13 +1,24 @@
-\chapter{Introduction}
+\chapter{Einführung}
 \label{chap:intro}
-(Intro Text) In order to confirm that the structure of a text or a program is correct, it is necessary to make sure this program is valid in respect to the grammar. This is called parsing. First the lexical analysis groups characters into tokens which can stand for various identifiers, keywords and constants of a language. After that the parser has to ensure that the input text is well structured, and tries to generate a parse tree. Only if a parse tree can be built, is a text or program syntactically correct.
 
-This project is a parser for LOGO in Java via JavaCC.
+\section{Ausgangslage}
+Wenn heute an der Berner Fachhochschule oder anderen Einrichtungen Vorlesungen abgehalten werden, kommen häufig Bildschirmpräsentationen zum Einsatz. Diese unterstützen das Erzählte und helfen den Dozenten, einen roten Faden zu ziehen. Weiter können die Folien (nachfolgend auch Slides genannt) den Unterrichteten abgegeben werden. Diese wiederum können die Unterlagen verwenden, um den Stoff zu repetieren und sich für Examen vorzubereiten. Solche Bildschirmpräsentationen können auf diverse Arten erstellt werden. Die bekannteste Möglichkeit stellt wohl Microsofts PowerPoint dar. Diese Software ist nicht nur sehr anwenderfreundlich sondern auch weit verbreitet. Doch nebst den Anschafungskosten ist PowerPoint abhängig vom Betriebssystem. Für Linux und Unix Systeme (ausser OSX) existiert das Produkt nicht. Gerade in wissenschaftlichen Kreisen verwendet jedoch ein stattlicher Prozentsatz andere Betriebssysteme als Windows/OSX. Als Alternative kommen diverse Varianten zum Einsatz: LibreOffice, OpenOffice, PDFs (aus Latex Vorlagen oder auch andere Quellen), etc. Mit dem aufkommen von Breitband-Internet gibt es auch immer mehr plattformunabhänige Tools, welche direkt im Browser funktionieren. Beispiele dafür sind\emph{Google Slides} oder \emph{Prezi}. 
 
-\begingroup
-\renewcommand{\cleardoublepage}{}
-\renewcommand{\clearpage}{}
-\chapter{Grammar}
-\label{chap:grammar}
-%\lstinputlisting[language=Python,basicstyle=\ttfamily]{../src/LogoGrammar.txt}
-\endgroup
+Nun kommt im spezifischen Fall der BFH TI noch ein weitere Anwendungsfall hinzu: Das Präsentieren von Programmiercode. Dieser Code oder Code-Ausschnitt (nachfolgend auch Code-Fragment, Snippet genannt) ist meist Teil eines grösseren Gesamtkontexts wie etwa einer Übung oder eines Beispiels. Diese Unterlagen werden von den Dozierenden laufend verändert und optimiert. So müssen auch die Präsentationen angepasst werden. Um hier eine Dynamisierung zu schaffen, müsste der Code flexibel in die Präsentation eingebunden werden. Dieser Grundgedanke führte zur Idee eines neuen Produktes, welches nachfolgend erklärt wird.
+
+\section{Idee}
+Das Leitmotiv besteht daraus, eine Applikation zu erstellen, welche von Dozenten und Schülern gleichermassen verwendet werden kann. Im Zentrum steht dabei das einfache Erstellen und teilen von Bildschirmpräsentationen. Hinzu kommt das Hinzufügen und Verwalten von Code-Fragmenten. Programmiercode, welcher in einem Repository verfügbar ist, soll auf einfache Weise zu einer Slide hinzugefügt werden können. Wird ein Teil des Snippets geändert, soll die Präsentation mit einer einfachen Aktion (Klick) aktualisiert werden können. Somit gehört das manuelle Anpassen von Code in Präsentationen der Vergangenheit an. 
+
+Um den verschiedenen Geräten und Betriebssystem potenzieller Nutzer Herr zu werden, soll die Applikation als Web-App in gängigen Web-Browsern nutzbar sein.
+
+Eine weitere Funktionalität ist das das Kommentieren von Slides. Hat ein Schüler eine Frage zu einem behandelten Punkt in einem Slide, kann er einen Kommentar hinzufügen. Der Dozierende oder auch Kommilitonen können dann antworten und ihm weiterhelfen. Natürlich kann die Kommentarfunktion auch dazu verwendet werden, um auf Fehler hinzuweisen oder anderen Benutzern weitere Informationen zu verlinken.
+
+Slides sollen nicht fix einer Präsentation angehören, sondern nach Bedarf in eine Präsentation eingefügt werden können. Somit sind Slides wiederverwendbare Komponenten. Um den Überblick an erstellten Slides und Präsentationen zu behalten, lassen sich beide durch das hinzufügen von Tags thematisch kategorisieren. Des weiteren sollen Nutzer sogenannte \emph{Channels} erstellen können, wo sie ihre Präsentationen hinzufügen können. Ein \emph{Channel} dient dazu, anderen Nutzer, beispielsweise Studenten eines Kurses, alle relevanten Präsentationen dieses Kurs geordnet darzustellen. Abonnenten (\emph{Subscriber}) eines \emph{Channels} werden dann benachrichtigt, sobald eine neue Präsentation verfügbar ist oder sich etwas an einer bestehenden Präsentation geändert hat. 
+
+Um die Darstellung von Slides zu beeinflussen sind zwei Funktionen geplant: Mit \emph{Templates} soll eine gewisse Grundstruktur vorgegeben werden. Diese kann in den Editor übernommen und dort bearbeitet werden. Es gibt Templates für Titelfolien, Inhaltsfolien, usw. Die Applikation selbst kommt bereits mit einer Grundmenge an Templates und der User soll nach Bedarf selbst neue hinzufügen können. Um die Gestaltung sind sogenannte \emph{Themes} zuständig. Sie steuern mit CSS-Ausdrücken das Layout einer Präsentation. Auch hier gibt es bereits vorgefertigte Vorlagen, aber auch die Möglichkeit für den User, eigene zu erstellen.
+
+Um den Zuschauern die bestmögliche Erfahrung zu bieten, sollen Präsentationen auch gedruckt beziehungsweise als PDF heruntergeladen werden können. Auch sollen Zuschauer eine Präsentation mit einem spezifischen Link in ihrem eigenen Webbrowser aufrufen können. Dies dient dazu, in überfüllten Hörsälen den Gästen in den hintersten Reihen trotzdem eine optimale Sicht auf die Geschehnisse auf dem Bildschirm zu bieten.
+
+Die aufgezählten Features sind nicht für jeden Benutzer in gleicher Ausführung verfügbar. Je nach Ausgestaltung  des Geschäftsmodel können gewisse Funktionen gar nicht oder nur in limitierter Ausprägung verwendet werden. Es ist aber auch denkbar, das für die Quantität (pro Slide, pro Präsentation, pro Theme, pro Template) eine Microtransaction gestellt wird. Die geeignetste Art der Monetariserung muss in der Entwicklung des Projekts evaluiert werden.
+
+
