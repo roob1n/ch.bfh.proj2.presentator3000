@@ -27,7 +27,7 @@
 \usepackage{underscore}
 \usepackage{transparent}
 \usepackage{import}
-\usepackage[english]{babel}										% german hyphenation
+\usepackage[ngerman]{babel}										% german hyphenation
 \usepackage[utf8]{inputenc}  							% Unix/Linux - load extended character set (ISO 8859-1)
 %\usepackage[ansinew]{inputenc}  							% Windows - load extended character set (ISO 8859-1)
 \usepackage[T1]{fontenc}											% hyphenation of words with ä,ö and ü
@@ -177,7 +177,7 @@
 	\includegraphics[width=15cm]{images/head}			% Titelbild definieren
 \end{textblock}
 
-\begin{textblock}{154}(28,134)
+\begin{textblock}{154}(28,162)
 	\begin{picture}(150,2)
 		\put(0,0){\color{bfhgrey}\rule{150mm}{2mm}}
 	\end{picture}
@@ -188,7 +188,7 @@
 %---------------------------------------------------------------------------
 \begin{flushleft}
 
-\vspace*{115mm}
+\vspace*{130mm}
 
 \fontsize{26pt}{28pt}\selectfont
 \titel 				\\							% Titel aus der Datei vorspann/titel.tex lesen
@@ -198,26 +198,26 @@
 \vspace{5mm}
 
 \fontsize{10pt}{12pt}\selectfont
-\textbf{Report} \\									% eingeben
+\textbf{Projektdokumentation} \\									% eingeben
 \vspace{3mm}
 
 % Abstract (eingeben):
 %---------------------------------------------------------------------------
 \begin{textblock}{150}(28,190)
 \fontsize{10pt}{12pt}\selectfont
-This document describes the process of what came to be this online presentation tool and what we could have done better in hindsight. \\
+Diese Dokumentation berschreibt die geleistete Arbeit im Rahmen des Projekt 2. \\
 \end{textblock}
 
 \begin{textblock}{150}(28,225)
 \fontsize{10pt}{17pt}\selectfont
 \begin{tabbing}
 xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
-Degree course:	\> Information technology	\\			% Namen eingeben
-Lecture:        \> Project 2 \\
-Authors:        \> Michael Bolli (michael.bolli.1@students.bfh.ch), \\
+Studiengang:	\> Informatik	\\			% Namen eingeben
+Kurs:        \> Project 2 \\
+Autoren:        \> Michael Bolli (michael.bolli.1@students.bfh.ch), \\
 \>Robin Schmid (robinsamuel.schmid@students.bfh.ch)		\\					% Namen eingeben
-Principal:	    \> Marcel Pfahrer		\\					% Namen eingeben
-Date:			\> \versiondate					\\		% aus Datei vorspann/version.tex lesen
+Betreuung:	    \> Marcel Pfahrer		\\					% Namen eingeben
+Datum:			\> 03.02.2017				\\		% aus Datei vorspann/version.tex lesen
 \end{tabbing}
 
 \end{textblock}
@@ -233,36 +233,8 @@ Berner Fachhochschule | Haute école spécialisée bernoise | Bern University of
 
 \end{titlepage}
 
-%
-% ===========================================================================
-% EOF
-%
-% Versionenkontrolle :
-% -----------------------------------------------
-
-\begin{textblock}{180}(15,150)
-\color{black}
-\begin{huge}
-Version history
-\end{huge}
-\vspace{10mm}
-
-\fontsize{10pt}{18pt}\selectfont
-\begin{tabbing}
-xxxxxxxxxxx\=xxxxxxxxxxxxxxx\=xxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \kill
-Version	\> Date	\> Status		\> Misc.		\\
-0.1	\> 2016-10-11	\> Draft		\> Initial version	\\
-0.2 \> 2016-10-28   \> Draft     \> Added main structure \\
-0.3 \> 2016-11-13   \> Draft    \> Added use cases and diagrams \\
-\end{tabbing}
-
-\end{textblock}
-
-\cleardoubleemptypage
 \setcounter{page}{1}
-\cleardoublepage
-\phantomsection
-\let\cleardoublepage\clearpage
+\tableofcontents
 
 %---------------------------------------------------------------------------
 
@@ -276,7 +248,6 @@ Version	\> Date	\> Status		\> Misc.		\\
 \include{chapters/domainmodel}
 \include{chapters/usecases}
 \include{chapters/mockups}
-\include{chapters/dokumentation-frontend}
 \include{chapters/dokumentation-api}
 \include{chapters/testing}
 \include{chapters/fazit}
